@@ -1,24 +1,85 @@
-# Compiled class file
-*.class
+# ========================
+# ShopSphere .gitignore
+# ========================
 
-# Log file
+# ---- Java / Maven ----
+backend/target/
+backend/*.jar
+backend/*.war
+backend/*.ear
+backend/.mvn/wrapper/maven-wrapper.jar
+!backend/.mvn/wrapper/maven-wrapper.properties
+backend/.classpath
+backend/.project
+backend/.settings/
+backend/.idea/
+backend/*.iml
+backend/*.ipr
+backend/*.iws
+
+# ---- Spring Boot ----
+backend/HELP.md
+backend/.sts4-cache
+
+# ---- Node / NPM ----
+frontend/node_modules/
+frontend/dist/
+frontend/.cache/
+frontend/.parcel-cache/
+frontend/coverage/
+frontend/.env.local
+frontend/.env.production
+frontend/.env.development
+
+# ---- Environment variables (NEVER commit secrets) ----
+.env
+.env.local
+.env.production
+.env.staging
+*.env
+
+# ---- Docker ----
+.dockerignore
+docker-compose.override.yml
+
+# ---- IDE ----
+.idea/
+*.iml
+.vscode/settings.json
+.vscode/launch.json
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ---- Logs ----
 *.log
+logs/
+*.log.*
 
-# BlueJ files
-*.ctxt
+# ---- OS ----
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
+# ---- Build artifacts ----
+*.class
 *.war
-*.nar
-*.ear
+*.jar
 *.zip
 *.tar.gz
-*.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# ---- Coverage reports ----
+backend/target/site/
+frontend/coverage/
+
+# ---- Upload directories ----
+backend/uploads/
+
+# ---- Gradle (if switching) ----
+.gradle/
