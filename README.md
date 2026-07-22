@@ -63,11 +63,13 @@
 | 🛍️ Product Browsing with Filters & Search | ✅ Complete |
 | 🛒 Shopping Cart with Coupon Codes | ✅ Complete |
 | ❤️ Wishlist Management | ✅ Complete |
+| ⚖️ Product Comparison | ✅ Complete |
 | 📦 Checkout with Address Selection | ✅ Complete |
-| 💳 Razorpay Payment Integration | ✅ Complete |
+| 💳 Razorpay Payment Integration (Success/Failure Handling) | ✅ Complete |
 | 📋 Order History & Tracking | ✅ Complete |
 | ↩️ Returns & Cancellation | ✅ Complete |
 | ⭐ Product Reviews & Ratings | ✅ Complete |
+| 📞 Contact, FAQ, & Policy Pages | ✅ Complete |
 | 🌙 Dark / Light Mode | ✅ Complete |
 | 📱 Fully Responsive Design | ✅ Complete |
 
@@ -134,7 +136,7 @@
 | GitHub Actions | CI/CD pipeline |
 | AWS EC2 | Cloud hosting |
 | AWS RDS | Managed MySQL |
-| AWS S3 | File/image storage |
+| AWS S3 / Cloudinary | File/image storage |
 
 ---
 

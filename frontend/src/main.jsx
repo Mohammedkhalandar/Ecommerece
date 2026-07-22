@@ -7,6 +7,7 @@ import App from './App.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import { CartProvider } from './context/CartContext.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
+import { CompareProvider } from './context/CompareContext.jsx'
 import './index.css'
 
 const queryClient = new QueryClient({
@@ -26,26 +27,28 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <ThemeProvider>
           <AuthProvider>
             <CartProvider>
-              <App />
-              <Toaster
-                position="top-right"
-                toastOptions={{
-                  duration: 3000,
-                  style: {
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '14px',
-                    borderRadius: '12px',
-                    padding: '12px 16px',
-                  },
-                  success: {
-                    iconTheme: { primary: '#10b981', secondary: '#fff' },
-                  },
-                  error: {
-                    iconTheme: { primary: '#ef4444', secondary: '#fff' },
-                    duration: 4000,
-                  },
-                }}
-              />
+              <CompareProvider>
+                <App />
+                <Toaster
+                  position="top-right"
+                  toastOptions={{
+                    duration: 3000,
+                    style: {
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '14px',
+                      borderRadius: '12px',
+                      padding: '12px 16px',
+                    },
+                    success: {
+                      iconTheme: { primary: '#10b981', secondary: '#fff' },
+                    },
+                    error: {
+                      iconTheme: { primary: '#ef4444', secondary: '#fff' },
+                      duration: 4000,
+                    },
+                  }}
+                />
+              </CompareProvider>
             </CartProvider>
           </AuthProvider>
         </ThemeProvider>

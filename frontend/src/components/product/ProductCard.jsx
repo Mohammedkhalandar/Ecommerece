@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom'
-import { Heart, ShoppingCart, Star, Eye } from 'lucide-react'
+import { Heart, ShoppingCart, Star, Eye, Scale } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useCart } from '@context/CartContext'
+import { useCompare } from '@context/CompareContext'
 import RatingStars from '@components/ui/RatingStars'
 
 export default function ProductCard({ product: p, listView = false }) {
   const { addToCart }     = useCart()
+  const { addToCompare, isInCompare } = useCompare()
   const [adding, setAdding] = useState(false)
   const [wishlisted, setWishlisted] = useState(false)
   const discount = p.discountPercent > 0 ? Math.round(p.discountPercent) : null
+  const inCompare = isInCompare(p.id)
 
   const handleAddToCart = async (e) => {
     e.preventDefault()
@@ -76,15 +79,25 @@ export default function ProductCard({ product: p, listView = false }) {
           </div>
 
           {/* Hover Actions */}
-          <div className="absolute top-2 right-2 flex flex-col gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
+          <div className="absolute top-2 right-2 flex flex-col gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0 z-10">
             <button
               onClick={e => { e.preventDefault(); setWishlisted(w => !w) }}
+              title="Add to wishlist"
               className={`w-8 h-8 rounded-full bg-white dark:bg-dark-800 shadow-md flex items-center justify-center
                           hover:scale-110 transition-transform ${wishlisted ? 'text-red-500' : 'text-dark-500'}`}
             >
               <Heart size={14} fill={wishlisted ? 'currentColor' : 'none'} />
             </button>
+            <button
+              onClick={e => { e.preventDefault(); addToCompare(p) }}
+              title="Add to compare"
+              className={`w-8 h-8 rounded-full bg-white dark:bg-dark-800 shadow-md flex items-center justify-center
+                          hover:scale-110 transition-transform ${inCompare ? 'text-primary-600 font-bold' : 'text-dark-500'}`}
+            >
+              <Scale size={14} />
+            </button>
             <Link to={`/products/${p.slug}`} onClick={e => e.stopPropagation()}
+              title="Quick view"
               className="w-8 h-8 rounded-full bg-white dark:bg-dark-800 shadow-md flex items-center justify-center hover:scale-110 transition-transform text-dark-500">
               <Eye size={14} />
             </Link>

@@ -18,6 +18,8 @@ const OrderHistoryPage = lazy(() => import('@pages/OrderHistoryPage'))
 const OrderDetailPage  = lazy(() => import('@pages/OrderDetailPage'))
 const ProfilePage      = lazy(() => import('@pages/ProfilePage'))
 const SearchPage       = lazy(() => import('@pages/SearchResultsPage'))
+const ComparePage      = lazy(() => import('@pages/ComparePage'))
+const TeamPage         = lazy(() => import('@pages/TeamPage'))
 const LoginPage        = lazy(() => import('@pages/auth/LoginPage'))
 const RegisterPage     = lazy(() => import('@pages/auth/RegisterPage'))
 const ForgotPassword   = lazy(() => import('@pages/auth/ForgotPasswordPage'))
@@ -48,6 +50,8 @@ export default function App() {
           <Route path="/products/:slug"      element={<ProductDetail />} />
           <Route path="/category/:slug"      element={<ProductListing />} />
           <Route path="/search"              element={<SearchPage />} />
+          <Route path="/compare"             element={<ComparePage />} />
+          <Route path="/team"                element={<TeamPage />} />
 
           {/* Auth Pages */}
           <Route path="/login"               element={<LoginPage />} />

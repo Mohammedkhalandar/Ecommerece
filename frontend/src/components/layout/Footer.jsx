@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 import { Zap, Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react'
 
 const LINKS = {
-  Shop:    [{ l: 'Products', to: '/products' }, { l: 'Categories', to: '/products' }, { l: 'Best Sellers', to: '/products?sort=totalSold,desc' }, { l: 'New Arrivals', to: '/products?sort=createdAt,desc' }],
-  Support: [{ l: 'Contact Us', to: '#' }, { l: 'FAQs', to: '#' }, { l: 'Shipping Info', to: '#' }, { l: 'Returns Policy', to: '#' }],
+  Shop:    [{ l: 'Products', to: '/products' }, { l: 'Categories', to: '/products' }, { l: 'Compare', to: '/compare' }, { l: 'New Arrivals', to: '/products?sort=createdAt,desc' }],
+  Project: [{ l: 'Team Members', to: '/team' }, { l: 'Architecture', to: '/team' }, { l: 'Contributions', to: '/team' }, { l: 'Tech Stack', to: '/team' }],
   Account: [{ l: 'My Profile', to: '/profile' }, { l: 'My Orders', to: '/orders' }, { l: 'Wishlist', to: '/wishlist' }, { l: 'Shopping Cart', to: '/cart' }],
 }
 

@@ -3,6 +3,8 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "./frontend/index.html",
+    "./frontend/src/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: 'class',
   theme: {
@@ -10,17 +12,17 @@ export default {
       // ── Brand Colors ───────────────────────────────────────
       colors: {
         primary: {
-          50:  '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#f97316',   // Main brand orange
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
-          950: '#431407',
+          50:  '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#2563eb',   // Main brand royal blue
+          600: '#1d4ed8',
+          700: '#1e40af',
+          800: '#1e3a8a',
+          900: '#172554',
+          950: '#0b132b',
         },
         accent: {
           50:  '#fdf4ff',

@@ -9,8 +9,8 @@
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
-  --color-primary:   #f97316;
-  --color-accent:    #d946ef;
+  --color-primary:   #2563eb;
+  --color-accent:    #3b82f6;
   --color-success:   #10b981;
   --color-warning:   #f59e0b;
   --color-error:     #ef4444;
@@ -21,7 +21,7 @@
   --color-border:    #e2e8f0;
   --transition:      200ms cubic-bezier(0.4, 0, 0.2, 1);
   --radius-card:     0.875rem;
-  --shadow-card:     0 2px 8px rgba(0,0,0,0.08);
+  --shadow-card:     0 2px 8px rgba(0,0,0,0.06);
 }
 
 .dark {

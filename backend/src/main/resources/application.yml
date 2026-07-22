@@ -52,6 +52,10 @@ spring:
     mongodb:
       uri: mongodb://${MONGODB_USERNAME:}${MONGODB_PASSWORD:}${MONGODB_HOST:localhost}:${MONGODB_PORT:27017}/${MONGODB_DATABASE:shopsphere_mongo}
       auto-index-creation: true
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
 
   # ── Mail ────────────────────────────────────────────────────
   mail:
@@ -127,6 +131,12 @@ stripe:
   secret-key: ${STRIPE_SECRET_KEY:}
   publishable-key: ${STRIPE_PUBLISHABLE_KEY:}
   currency: INR
+
+# ── Cloudinary ───────────────────────────────────────────────
+cloudinary:
+  cloud-name: ${CLOUDINARY_CLOUD_NAME:}
+  api-key: ${CLOUDINARY_API_KEY:}
+  api-secret: ${CLOUDINARY_API_SECRET:}
 
 # ── File Storage ─────────────────────────────────────────────
 file:

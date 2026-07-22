@@ -2,8 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  root: __dirname,
   plugins: [react()],
 
   resolve: {
@@ -20,18 +20,9 @@ export default defineConfig({
   },
 
   server: {
-    port: 5173,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        secure: false,
-      },
-      '/uploads': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-      },
-    },
+    port: 3000,
+    host: '0.0.0.0',
+    allowedHosts: 'all'
   },
 
   build: {
@@ -48,11 +39,5 @@ export default defineConfig({
       },
     },
     chunkSizeWarningLimit: 1000,
-  },
-
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/test/setup.js'],
-  },
+  }
 })
