@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { SlidersHorizontal, Grid3X3, List, X, ChevronDown } from 'lucide-react'
 import { productAPI, categoryAPI } from '@services/api'
@@ -18,13 +18,14 @@ const SORT_OPTIONS = [
 ]
 
 export default function ProductListingPage() {
+  const { slug: categorySlug } = useParams()
   const [searchParams, setSearchParams] = useSearchParams()
   const [sidebarOpen, setSidebarOpen]   = useState(false)
   const [viewMode, setViewMode]         = useState('grid')
 
   const page      = parseInt(searchParams.get('page') || '0')
   const sortParam = searchParams.get('sort') || 'createdAt,desc'
-  const category  = searchParams.get('category') || ''
+  const categoryFilter = searchParams.get('category') || ''
   const brand     = searchParams.get('brand') || ''
   const minPrice  = searchParams.get('minPrice') || ''
   const maxPrice  = searchParams.get('maxPrice') || ''
@@ -32,23 +33,38 @@ export default function ProductListingPage() {
 
   const [sortBy, sortDir] = sortParam.split(',')
 
-  const { data: productsData, isLoading } = useQuery({
-    queryKey: ['products', { page, sortBy, sortDir, category, brand, minPrice, maxPrice, q }],
-    queryFn: () => q
-      ? productAPI.search({ q, page, size: 12, sortBy, sortDir })
-      : productAPI.getAll({ page, size: 12, sortBy, sortDir }),
-    keepPreviousData: true,
-  })
-
-  const { data: categoriesData } = useQuery({
+  const { data: categoriesData, isLoading: loadingCategories } = useQuery({
     queryKey: ['categories'],
     queryFn: categoryAPI.getAll,
     staleTime: Infinity,
   })
 
-  const products   = productsData?.content || []
-  const totalPages = productsData?.totalPages || 0
-  const totalItems = productsData?.totalElements || 0
+  const categories = categoriesData?.data || []
+  const { data: categoryResponse, isLoading: loadingCategory } = useQuery({
+    queryKey: ['category', categorySlug],
+    queryFn: () => categoryAPI.getBySlug(categorySlug),
+    enabled: Boolean(categorySlug),
+  })
+  const selectedCategory = categorySlug
+    ? categoryResponse?.data || categoryResponse
+    : categories.find(item => String(item.id) === categoryFilter)
+
+  const { data: productsData, isLoading: loadingProducts } = useQuery({
+    queryKey: ['products', { page, sortBy, sortDir, categorySlug, categoryFilter, brand, minPrice, maxPrice, q }],
+    queryFn: () => q
+      ? productAPI.search({ q, page, size: 12, sortBy, sortDir })
+      : selectedCategory
+        ? productAPI.getByCategory(selectedCategory.id, { page, size: 12 })
+      : productAPI.getAll({ page, size: 12, sortBy, sortDir }),
+    enabled: (!categorySlug && !categoryFilter) || Boolean(selectedCategory?.id),
+    keepPreviousData: true,
+  })
+
+  const pageData = productsData?.data || productsData
+  const products = pageData?.content || []
+  const totalPages = pageData?.totalPages || 0
+  const totalItems = pageData?.totalElements || 0
+  const isLoading = loadingProducts || loadingCategories || loadingCategory
 
   const updateParam = (key, value) => {
     const params = new URLSearchParams(searchParams)
@@ -66,7 +82,7 @@ export default function ProductListingPage() {
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-2xl font-bold text-dark-900 dark:text-white">
-              {q ? `Results for "${q}"` : 'All Products'}
+              {q ? `Results for "${q}"` : selectedCategory?.name || 'All Products'}
             </h1>
             <p className="text-dark-500 dark:text-dark-400 text-sm mt-1">
               {isLoading ? 'Loading...' : `${totalItems.toLocaleString()} products found`}
@@ -115,8 +131,8 @@ export default function ProductListingPage() {
           <FilterSidebar
             open={sidebarOpen}
             onClose={() => setSidebarOpen(false)}
-            categories={categoriesData?.data || []}
-            filters={{ category, brand, minPrice, maxPrice }}
+            categories={categories}
+            filters={{ category: categoryFilter, brand, minPrice, maxPrice }}
             onFilterChange={updateParam}
           />
 

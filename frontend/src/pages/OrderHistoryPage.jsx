@@ -145,7 +145,7 @@ export default function OrderHistoryPage() {
                   {order.items?.slice(0, 4).map((item, idx) => (
                     <div key={idx} className="flex items-center gap-2 bg-dark-50 dark:bg-dark-800/60 p-2 rounded-xl border border-dark-100 dark:border-dark-700">
                       <img
-                        src={item.productThumbnail || item.product?.thumbnailUrl || '/placeholder.jpg'}
+                        src={item.productThumbnail || item.product?.thumbnailUrl || '/placeholder.svg'}
                         alt={item.productName || item.product?.name}
                         className="w-10 h-10 object-contain rounded-lg bg-white dark:bg-dark-900 p-1"
                       />

@@ -78,6 +78,11 @@ public class ProductService {
         return productRepository.findByBestSellerTrueAndActiveTrueOrderByTotalSoldDesc();
     }
 
+    public List<Product> getDeals() {
+        return productRepository.findTop5ByActiveTrueAndDiscountPercentGreaterThanOrderByDiscountPercentDesc(
+                BigDecimal.ZERO);
+    }
+
     public List<Product> getTopSellingProducts(int limit) {
         return productRepository.findTopSellingProducts(PageRequest.of(0, limit));
     }

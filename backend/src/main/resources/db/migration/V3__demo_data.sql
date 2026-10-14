@@ -50,8 +50,8 @@ INSERT IGNORE INTO products (name, slug, sku, short_description, price, original
 ('Matte Liquid Lipstick', 'matte-lipstick', 'SKU-030', '16HR SuperStay', 499.00, 699.00, 28.61, 90, 6, 16, 'Maybelline', 1, 0, 1, 4.4, 320);
 
 -- Insert Sample Orders
-INSERT IGNORE INTO orders (order_number, user_id, total_amount, sub_total, tax_amount, shipping_fee, status, payment_method, payment_status, created_at)
+INSERT IGNORE INTO orders (order_number, user_id, total_amount, subtotal, tax_amount, shipping_charge, status, created_at)
 VALUES 
-    ('ORD-2026-0002', (SELECT id FROM users WHERE email='john.doe@example.com'), 119999.00, 119999.00, 21599.82, 0, 'DELIVERED', 'RAZORPAY', 'PAID', DATE_SUB(NOW(), INTERVAL 5 DAY)),
-    ('ORD-2026-0003', (SELECT id FROM users WHERE email='alex@example.com'), 149999.00, 149999.00, 26999.82, 0, 'SHIPPED', 'RAZORPAY', 'PAID', DATE_SUB(NOW(), INTERVAL 2 DAY)),
-    ('ORD-2026-0004', (SELECT id FROM users WHERE email='david@example.com'), 2999.00, 2999.00, 539.82, 49.00, 'PENDING', 'COD', 'PENDING', NOW());
+    ('ORD-2026-0002', (SELECT id FROM users WHERE email='john.doe@example.com'), 119999.00, 119999.00, 21599.82, 0, 'DELIVERED', DATE_SUB(NOW(), INTERVAL 5 DAY)),
+    ('ORD-2026-0003', (SELECT id FROM users WHERE email='alex@example.com'), 149999.00, 149999.00, 26999.82, 0, 'SHIPPED', DATE_SUB(NOW(), INTERVAL 2 DAY)),
+    ('ORD-2026-0004', (SELECT id FROM users WHERE email='david@example.com'), 2999.00, 2999.00, 539.82, 49.00, 'PENDING', NOW());

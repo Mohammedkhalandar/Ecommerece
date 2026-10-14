@@ -60,7 +60,7 @@ export default function ProductDetailPage() {
     </div>
   )
 
-  const images = prod.images?.length > 0 ? prod.images : ['/placeholder.jpg']
+  const images = prod.images?.length > 0 ? prod.images : ['/placeholder.svg']
   const discountPct = prod.discountPercent > 0 ? Math.round(prod.discountPercent) : null
   const inStock = prod.stockQuantity > 0
 
@@ -96,6 +96,7 @@ export default function ProductDetailPage() {
                   src={images[imgIdx]}
                   alt={prod.name}
                   className="w-full h-full object-cover"
+                  onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = '/placeholder.svg' }}
                   initial={{ opacity: 0, scale: 1.02 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}

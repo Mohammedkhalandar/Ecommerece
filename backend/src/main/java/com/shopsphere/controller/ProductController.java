@@ -96,6 +96,18 @@ public class ProductController {
         return ResponseEntity.ok(ApiResponse.success(productService.getBestSellers()));
     }
 
+    @GetMapping("/trending")
+    @Operation(summary = "Get top-selling products")
+    public ResponseEntity<ApiResponse<List<Product>>> getTrending() {
+        return ResponseEntity.ok(ApiResponse.success(productService.getTopSellingProducts(5)));
+    }
+
+    @GetMapping("/deals")
+    @Operation(summary = "Get the highest-discount active products")
+    public ResponseEntity<ApiResponse<List<Product>>> getDeals() {
+        return ResponseEntity.ok(ApiResponse.success(productService.getDeals()));
+    }
+
     @GetMapping("/brands")
     @Operation(summary = "Get all available brands")
     public ResponseEntity<ApiResponse<List<String>>> getBrands() {

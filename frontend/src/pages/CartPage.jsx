@@ -22,7 +22,7 @@ function CartItemRow({ item, onUpdate, onRemove }) {
       className="flex gap-4 py-4 border-b border-dark-100 dark:border-dark-700 last:border-0"
     >
       <Link to={`/products/${item.product?.slug}`} className="flex-shrink-0">
-        <img src={item.product?.thumbnailUrl || '/placeholder.jpg'} alt={item.product?.name}
+        <img src={item.product?.thumbnailUrl || '/placeholder.svg'} alt={item.product?.name}
           className="w-20 h-20 object-cover rounded-xl bg-dark-100" />
       </Link>
       <div className="flex-1 min-w-0">

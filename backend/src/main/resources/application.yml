@@ -50,8 +50,13 @@ spring:
   # ── MongoDB ─────────────────────────────────────────────────
   data:
     mongodb:
-      uri: mongodb://${MONGODB_USERNAME:}${MONGODB_PASSWORD:}${MONGODB_HOST:localhost}:${MONGODB_PORT:27017}/${MONGODB_DATABASE:shopsphere_mongo}
-      auto-index-creation: true
+      host: ${MONGODB_HOST:localhost}
+      port: ${MONGODB_PORT:27017}
+      database: ${MONGODB_DATABASE:shopsphere_mongo}
+      username: ${MONGODB_USERNAME:}
+      password: ${MONGODB_PASSWORD:}
+      authentication-database: ${MONGODB_AUTH_DATABASE:admin}
+      auto-index-creation: false
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}

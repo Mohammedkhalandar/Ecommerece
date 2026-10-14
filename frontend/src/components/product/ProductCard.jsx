@@ -25,8 +25,9 @@ export default function ProductCard({ product: p, listView = false }) {
     return (
       <Link to={`/products/${p.slug}`} className="card card-hover p-4 flex gap-4 group">
         <div className="w-28 h-28 rounded-xl overflow-hidden flex-shrink-0 bg-dark-100 dark:bg-dark-700">
-          <img src={p.thumbnailUrl || '/placeholder.jpg'} alt={p.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <img src={p.thumbnailUrl || '/placeholder.svg'} alt={p.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = '/placeholder.svg' }} />
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-xs text-primary-500 font-semibold uppercase mb-1">{p.brand}</p>
@@ -59,10 +60,11 @@ export default function ProductCard({ product: p, listView = false }) {
         {/* Image */}
         <div className="relative overflow-hidden aspect-square bg-dark-50 dark:bg-dark-800">
           <img
-            src={p.thumbnailUrl || '/placeholder.jpg'}
+            src={p.thumbnailUrl || '/placeholder.svg'}
             alt={p.name}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
+            onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = '/placeholder.svg' }}
           />
 
           {/* Badges */}

@@ -156,9 +156,10 @@ export default function HomePage() {
                   className="group card p-3 text-center hover:border-primary-500 dark:hover:border-primary-500 transition-all shadow-sm"
                 >
                   <img
-                    src={cat.image || '/placeholder.jpg'}
+                    src={cat.imageUrl || '/placeholder.svg'}
                     alt={cat.name}
                     className="w-16 h-16 object-cover rounded-full mx-auto mb-3 group-hover:scale-105 transition-transform"
+                    onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = '/placeholder.svg' }}
                   />
                   <h3 className="font-semibold text-xs text-dark-900 dark:text-white group-hover:text-primary-600 truncate">
                     {cat.name}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+  <rect width="640" height="640" fill="#f3f4f6"/>
+  <circle cx="320" cy="270" r="104" fill="#e5e7eb"/>
+  <path d="M258 282h124l18 116H240l18-116Zm30-12a32 32 0 0 1 64 0" fill="none" stroke="#9ca3af" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+  <text x="320" y="470" fill="#6b7280" font-family="Arial, sans-serif" font-size="24" text-anchor="middle">Image unavailable</text>
+</svg>

@@ -1,5 +1,7 @@
 package com.shopsphere.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -16,6 +18,7 @@ import java.util.List;
  * Example: Electronics → Mobile Phones
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "sub_categories", indexes = {
         @Index(name = "idx_subcategory_slug", columnList = "slug", unique = true)
 })
@@ -51,9 +54,11 @@ public class SubCategory {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
+    @JsonIgnore
     private Category category;
 
     @OneToMany(mappedBy = "subCategory")
+    @JsonIgnore
     @Builder.Default
     private List<Product> products = new ArrayList<>();
 

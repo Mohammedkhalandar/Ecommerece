@@ -6,7 +6,7 @@ export default function TeamPage() {
   const teamMembers = [
     {
       id: 1,
-      name: 'Mahesh Seerla',
+      name: 'Khalandar',
       role: 'Full Stack Developer & Lead Architect',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400',
       initials: 'MS',
